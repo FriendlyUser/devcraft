@@ -1,0 +1,412 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 950" width="100%" height="100%">
+  <defs>
+    <!-- Dark Tech Gradients -->
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#020617" />
+    </radialGradient>
+    
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="0.95" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="hexGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" stroke-opacity="0.6" />
+      <circle cx="0" cy="0" r="1.5" fill="#334155" />
+    </pattern>
+
+    <!-- Filters & Clip Paths -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000000" flood-opacity="0.7" />
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <clipPath id="cardClip">
+      <rect width="320" height="200" rx="16" />
+    </clipPath>
+
+    <!-- Connection Paths (Updated for 320x200 nodes and new spacing) -->
+    <!-- Node 1 (80,140) to Node 2 (490,140) -->
+    <path id="p1" d="M 400 240 L 490 240" fill="none" />
+    <!-- Node 2 (490,140) to Node 3 (900,140) -->
+    <path id="p2" d="M 810 240 L 900 240" fill="none" />
+    <!-- Node 3 (900,140) to Node 4 (900,420) -->
+    <path id="p3" d="M 1060 340 L 1060 420" fill="none" />
+    <!-- Node 4 (900,420) to Node 5 (490,420) -->
+    <path id="p4" d="M 900 520 L 810 520" fill="none" />
+    <!-- Node 5 (490,420) to Node 6 (80,420) -->
+    <path id="p5" d="M 490 520 L 400 520" fill="none" />
+    <!-- Node 6 (80,420) to Node 7 (490,700) -->
+    <path id="p6" d="M 240 620 L 240 760 Q 240 800 280 800 L 490 800" fill="none" />
+
+    <style>
+      .text-title { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: 18px; font-weight: 700; fill: #f8fafc; letter-spacing: 0.5px; }
+      .text-desc { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 500; fill: #94a3b8; }
+      .text-list { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 500; fill: #cbd5e1; }
+      .text-ribbon { font-family: ui-monospace, monospace; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; }
+      .text-header { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-size: 36px; font-weight: 800; fill: #ffffff; letter-spacing: 2px; }
+      .text-subheader { font-family: ui-monospace, monospace; font-size: 16px; font-weight: 600; fill: #38bdf8; letter-spacing: 1.5px; }
+      
+      .flow-line { stroke-dasharray: 8 6; animation: flowAnim 1.2s linear infinite; }
+      .flow-line-slow { stroke-dasharray: 8 6; animation: flowAnim 2.5s linear infinite; }
+      
+      @keyframes flowAnim { from { stroke-dashoffset: 28; } to { stroke-dashoffset: 0; } }
+      
+      .pulse-slow { animation: pulseAnim 3s ease-in-out infinite alternate; }
+      .pulse-fast { animation: pulseAnim 1.5s ease-in-out infinite alternate; }
+      @keyframes pulseAnim { from { opacity: 0.3; transform: scale(0.9); } to { opacity: 1; transform: scale(1.1); } }
+      
+      .spin { transform-origin: center; animation: spinAnim 8s linear infinite; }
+      @keyframes spinAnim { 100% { transform: rotate(360deg); } }
+      
+      .blink { animation: blinkAnim 1s step-end infinite; }
+      @keyframes blinkAnim { 50% { opacity: 0; } }
+
+      .scan-line { animation: scanAnim 2s linear infinite; }
+      @keyframes scanAnim { 0% { transform: translateY(-5px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(30px); opacity: 0; } }
+    </style>
+  </defs>
+
+  <!-- Base Canvas -->
+  <rect width="1300" height="950" fill="url(#bgGlow)" />
+  <rect width="1300" height="950" fill="url(#hexGrid)" />
+
+  <!-- Background Decorative Elements -->
+  <circle cx="150" cy="150" r="300" fill="#38bdf8" opacity="0.04" filter="url(#glow)" />
+  <circle cx="1150" cy="450" r="400" fill="#f472b6" opacity="0.03" filter="url(#glow)" />
+  <circle cx="300" cy="800" r="250" fill="#34d399" opacity="0.04" filter="url(#glow)" />
+
+  <!-- Header -->
+  <g transform="translate(650, 60)" text-anchor="middle">
+    <text y="0" class="text-header">MODERN WEB SCRAPING ARCHITECTURE</text>
+    <text y="30" class="text-subheader">DATA EXTRACTION PIPELINE &amp; EVASION PROTOCOLS</text>
+    <line x1="-180" y1="50" x2="180" y2="50" stroke="#334155" stroke-width="2" />
+    <circle cx="0" cy="50" r="5" fill="#38bdf8" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CONNECTION PATHS (Data Flow Streams)       -->
+  <!-- ========================================== -->
+  <g stroke-width="4" fill="none" opacity="0.3">
+    <!-- Base track lines -->
+    <use href="#p1" stroke="#475569" />
+    <use href="#p2" stroke="#475569" />
+    <use href="#p3" stroke="#475569" />
+    <use href="#p4" stroke="#475569" />
+    <use href="#p5" stroke="#475569" />
+    <use href="#p6" stroke="#475569" />
+  </g>
+
+  <!-- Animated Data Flow Lines -->
+  <g stroke-width="4" fill="none" filter="url(#glow)">
+    <use href="#p1" stroke="#38bdf8" class="flow-line" />
+    <use href="#p2" stroke="#a855f7" class="flow-line" />
+    <use href="#p3" stroke="#f472b6" class="flow-line" />
+    <use href="#p4" stroke="#fb923c" class="flow-line" />
+    <use href="#p5" stroke="#ef4444" class="flow-line" />
+    <use href="#p6" stroke="#34d399" class="flow-line-slow" />
+  </g>
+
+  <!-- Flowing Particles -->
+  <g>
+    <circle r="5" fill="#ffffff" filter="url(#glow)"><animateMotion dur="1.2s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+    <circle r="3.5" fill="#38bdf8"><animateMotion dur="1.2s" begin="0.4s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle>
+    <circle r="5" fill="#ffffff" filter="url(#glow)"><animateMotion dur="1.2s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle>
+    <circle r="3.5" fill="#a855f7"><animateMotion dur="1.2s" begin="0.5s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle>
+    <circle r="5" fill="#ffffff" filter="url(#glow)"><animateMotion dur="1s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion></circle>
+    <circle r="5" fill="#ffffff" filter="url(#glow)"><animateMotion dur="1.2s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle>
+    <circle r="3.5" fill="#fb923c"><animateMotion dur="1.2s" begin="0.6s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion></circle>
+    <circle r="5" fill="#ffffff" filter="url(#glow)"><animateMotion dur="1.2s" repeatCount="indefinite"><mpath href="#p5"/></animateMotion></circle>
+    <circle r="3.5" fill="#ef4444"><animateMotion dur="1.2s" begin="0.8s" repeatCount="indefinite"><mpath href="#p5"/></animateMotion></circle>
+    <circle r="5" fill="#ffffff" filter="url(#glow)"><animateMotion dur="2.5s" repeatCount="indefinite"><mpath href="#p6"/></animateMotion></circle>
+    <circle r="3.5" fill="#34d399"><animateMotion dur="2.5s" begin="1s" repeatCount="indefinite"><mpath href="#p6"/></animateMotion></circle>
+  </g>
+
+
+  <!-- ========================================== -->
+  <!-- NODE 1: SCRAPER CONTROLLER                 -->
+  <!-- ========================================== -->
+  <g transform="translate(80, 140)" filter="url(#dropShadow)">
+    <rect width="320" height="200" rx="16" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="2" />
+    
+    <!-- Diagonal Ribbon -->
+    <g clip-path="url(#cardClip)">
+      <g transform="translate(285, 35) rotate(45)">
+        <rect x="-80" y="-40" width="160" height="55" fill="#0f172a" />
+        <line x1="-80" y1="13" x2="80" y2="13" stroke="#38bdf8" stroke-width="2" />
+        <circle cx="-35" cy="4" r="3.5" fill="#38bdf8" class="pulse-slow" filter="url(#glow)" />
+        <text x="0" y="8" class="text-ribbon" fill="#38bdf8" text-anchor="middle">ACTIVE</text>
+      </g>
+    </g>
+    
+    <!-- Icon Container -->
+    <rect x="24" y="24" width="56" height="56" rx="14" fill="#38bdf8" opacity="0.15" />
+    <g transform="translate(32, 32)">
+      <rect width="40" height="30" rx="6" y="6" fill="none" stroke="#38bdf8" stroke-width="2" />
+      <circle cx="10" cy="12" r="2" fill="#38bdf8" />
+      <circle cx="16" cy="12" r="2" fill="#38bdf8" opacity="0.6" />
+      <path d="M 8 20 L 14 24 L 8 28" stroke="#38bdf8" stroke-width="2" fill="none" />
+      <line x1="16" y1="28" x2="24" y2="28" stroke="#38bdf8" stroke-width="2" class="blink" />
+    </g>
+
+    <text x="100" y="46" class="text-title">1. Scraper Script</text>
+    <text x="100" y="68" class="text-desc" fill="#38bdf8">Node.js / Python Runtime</text>
+
+    <line x1="24" y1="104" x2="296" y2="104" stroke="#1e293b" stroke-width="1.5" />
+
+    <g transform="translate(24, 130)">
+      <circle cx="6" cy="0" r="3.5" fill="#38bdf8" />
+      <text x="20" y="5" class="text-list">Initiates distributed request tasks</text>
+      <circle cx="6" cy="24" r="3.5" fill="#38bdf8" />
+      <text x="20" y="29" class="text-list">Orchestrates async logic &amp; retries</text>
+      <circle cx="6" cy="48" r="3.5" fill="#38bdf8" />
+      <text x="20" y="53" class="text-list">Manages configuration parameters</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- NODE 2: BROWSER ENGINE                     -->
+  <!-- ========================================== -->
+  <g transform="translate(490, 140)" filter="url(#dropShadow)">
+    <rect width="320" height="200" rx="16" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="2" />
+    
+    <!-- Diagonal Ribbon -->
+    <g clip-path="url(#cardClip)">
+      <g transform="translate(285, 35) rotate(45)">
+        <rect x="-80" y="-40" width="160" height="55" fill="#0f172a" />
+        <line x1="-80" y1="13" x2="80" y2="13" stroke="#a855f7" stroke-width="2" />
+        <circle cx="-35" cy="4" r="3.5" fill="#a855f7" class="pulse-fast" filter="url(#glow)"/>
+        <text x="0" y="8" class="text-ribbon" fill="#a855f7" text-anchor="middle">RENDER</text>
+      </g>
+    </g>
+    
+    <rect x="24" y="24" width="56" height="56" rx="14" fill="#a855f7" opacity="0.15" />
+    <g transform="translate(30, 32)">
+      <rect width="44" height="34" rx="6" y="4" fill="none" stroke="#a855f7" stroke-width="2" />
+      <line x1="0" y1="14" x2="44" y2="14" stroke="#a855f7" stroke-width="2" />
+      <g transform="translate(22, 26)" class="spin">
+        <circle cx="0" cy="0" r="5" fill="none" stroke="#a855f7" stroke-width="2" />
+        <path d="M 0 -8 L 0 -5 M 0 5 L 0 8 M -8 0 L -5 0 M 5 0 L 8 0 M -6 -6 L -4 -4 M 4 4 L 6 6 M -6 6 L -4 4 M 4 -4 L 6 -6" stroke="#a855f7" stroke-width="1.5" />
+      </g>
+    </g>
+
+    <text x="100" y="46" class="text-title">2. Browser Engine</text>
+    <text x="100" y="68" class="text-desc" fill="#a855f7">Puppeteer / Playwright</text>
+
+    <line x1="24" y1="104" x2="296" y2="104" stroke="#1e293b" stroke-width="1.5" />
+
+    <g transform="translate(24, 130)">
+      <circle cx="6" cy="0" r="3.5" fill="#a855f7" />
+      <text x="20" y="5" class="text-list">Spawns full headless instances</text>
+      <circle cx="6" cy="24" r="3.5" fill="#a855f7" />
+      <text x="20" y="29" class="text-list">Executes complex JS / SPA frameworks</text>
+      <circle cx="6" cy="48" r="3.5" fill="#a855f7" />
+      <text x="20" y="53" class="text-list">Renders full DOM environments</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- NODE 3: PROXY NETWORK                      -->
+  <!-- ========================================== -->
+  <g transform="translate(900, 140)" filter="url(#dropShadow)">
+    <rect width="320" height="200" rx="16" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="2" />
+    
+    <!-- Diagonal Ribbon -->
+    <g clip-path="url(#cardClip)">
+      <g transform="translate(285, 35) rotate(45)">
+        <rect x="-80" y="-40" width="160" height="55" fill="#0f172a" />
+        <line x1="-80" y1="13" x2="80" y2="13" stroke="#f472b6" stroke-width="2" />
+        <circle cx="-35" cy="4" r="3.5" fill="#f472b6" class="pulse-slow" filter="url(#glow)"/>
+        <text x="0" y="8" class="text-ribbon" fill="#f472b6" text-anchor="middle">ROTATE</text>
+      </g>
+    </g>
+    
+    <rect x="24" y="24" width="56" height="56" rx="14" fill="#f472b6" opacity="0.15" />
+    <g transform="translate(34, 34)">
+      <circle cx="18" cy="18" r="16" fill="none" stroke="#f472b6" stroke-width="2" />
+      <ellipse cx="18" cy="18" rx="8" ry="16" fill="none" stroke="#f472b6" stroke-width="1.5" />
+      <line x1="2" y1="18" x2="34" y2="18" stroke="#f472b6" stroke-width="1.5" />
+      <circle cx="6" cy="6" r="3" fill="#f472b6" filter="url(#glow)" />
+      <circle cx="30" cy="30" r="3" fill="#f472b6" filter="url(#glow)" />
+      <circle cx="28" cy="4" r="3" fill="#f472b6" filter="url(#glow)" />
+      <path d="M 8 8 L 14 14 M 28 28 L 22 22" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="2 2" />
+    </g>
+
+    <text x="100" y="46" class="text-title">3. Proxy Pool</text>
+    <text x="100" y="68" class="text-desc" fill="#f472b6">Residential &amp; ISP Routing</text>
+
+    <line x1="24" y1="104" x2="296" y2="104" stroke="#1e293b" stroke-width="1.5" />
+
+    <g transform="translate(24, 130)">
+      <circle cx="6" cy="0" r="3.5" fill="#f472b6" />
+      <text x="20" y="5" class="text-list">Masks original IP architecture</text>
+      <circle cx="6" cy="24" r="3.5" fill="#f472b6" />
+      <text x="20" y="29" class="text-list">Routes traffic globally across peers</text>
+      <circle cx="6" cy="48" r="3.5" fill="#f472b6" />
+      <text x="20" y="53" class="text-list">Circumvents IP-based rate-limits</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- NODE 4: ANTI-BOT EVASION                   -->
+  <!-- ========================================== -->
+  <g transform="translate(900, 420)" filter="url(#dropShadow)">
+    <rect width="320" height="200" rx="16" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="2" />
+    
+    <!-- Diagonal Ribbon -->
+    <g clip-path="url(#cardClip)">
+      <g transform="translate(285, 35) rotate(45)">
+        <rect x="-80" y="-40" width="160" height="55" fill="#0f172a" />
+        <line x1="-80" y1="13" x2="80" y2="13" stroke="#fb923c" stroke-width="2" />
+        <circle cx="-35" cy="4" r="3.5" fill="#fb923c" class="pulse-fast" filter="url(#glow)"/>
+        <text x="0" y="8" class="text-ribbon" fill="#fb923c" text-anchor="middle">BYPASS</text>
+      </g>
+    </g>
+    
+    <rect x="24" y="24" width="56" height="56" rx="14" fill="#fb923c" opacity="0.15" />
+    <g transform="translate(34, 30)">
+      <path d="M 18 0 L 36 8 L 36 20 C 36 32 28 40 18 44 C 8 40 0 32 0 20 L 0 8 Z" fill="none" stroke="#fb923c" stroke-width="2" />
+      <path d="M 10 22 L 16 28 L 28 14" stroke="#fb923c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+    </g>
+
+    <text x="100" y="46" class="text-title">4. Anti-Bot Bypass</text>
+    <text x="100" y="68" class="text-desc" fill="#fb923c">CAPTCHA &amp; WAF Evasion</text>
+
+    <line x1="24" y1="104" x2="296" y2="104" stroke="#1e293b" stroke-width="1.5" />
+
+    <g transform="translate(24, 130)">
+      <circle cx="6" cy="0" r="3.5" fill="#fb923c" />
+      <text x="20" y="5" class="text-list">Spoofs TLS &amp; Canvas fingerprints</text>
+      <circle cx="6" cy="24" r="3.5" fill="#fb923c" />
+      <text x="20" y="29" class="text-list">Utilizes automated CAPTCHA solvers</text>
+      <circle cx="6" cy="48" r="3.5" fill="#fb923c" />
+      <text x="20" y="53" class="text-list">Evades advanced WAF firewall checks</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- NODE 5: TARGET SERVER                      -->
+  <!-- ========================================== -->
+  <g transform="translate(490, 420)" filter="url(#dropShadow)">
+    <rect width="320" height="200" rx="16" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="2" />
+    
+    <!-- Diagonal Ribbon -->
+    <g clip-path="url(#cardClip)">
+      <g transform="translate(285, 35) rotate(45)">
+        <rect x="-80" y="-40" width="160" height="55" fill="#0f172a" />
+        <line x1="-80" y1="13" x2="80" y2="13" stroke="#ef4444" stroke-width="2" />
+        <circle cx="-35" cy="4" r="3.5" fill="#ef4444" filter="url(#glow)"/>
+        <text x="0" y="8" class="text-ribbon" fill="#ef4444" text-anchor="middle">TARGET</text>
+      </g>
+    </g>
+    
+    <rect x="24" y="24" width="56" height="56" rx="14" fill="#ef4444" opacity="0.15" />
+    <g transform="translate(34, 30)">
+      <rect x="0" y="0" width="36" height="10" rx="3" fill="none" stroke="#ef4444" stroke-width="2" />
+      <rect x="0" y="16" width="36" height="10" rx="3" fill="none" stroke="#ef4444" stroke-width="2" />
+      <rect x="0" y="32" width="36" height="10" rx="3" fill="none" stroke="#ef4444" stroke-width="2" />
+      <circle cx="28" cy="5" r="2" fill="#ef4444" class="blink" />
+      <circle cx="28" cy="21" r="2" fill="#ef4444" />
+      <circle cx="28" cy="37" r="2" fill="#ef4444" class="pulse-fast" />
+    </g>
+
+    <text x="100" y="46" class="text-title">5. Target Website</text>
+    <text x="100" y="68" class="text-desc" fill="#ef4444">Data Source Server</text>
+
+    <line x1="24" y1="104" x2="296" y2="104" stroke="#1e293b" stroke-width="1.5" />
+
+    <g transform="translate(24, 130)">
+      <circle cx="6" cy="0" r="3.5" fill="#ef4444" />
+      <text x="20" y="5" class="text-list">Receives anonymized HTTP requests</text>
+      <circle cx="6" cy="24" r="3.5" fill="#ef4444" />
+      <text x="20" y="29" class="text-list">Validates connection trust &amp; origin</text>
+      <circle cx="6" cy="48" r="3.5" fill="#ef4444" />
+      <text x="20" y="53" class="text-list">Returns raw HTML/JSON response</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- NODE 6: DATA EXTRACTION                    -->
+  <!-- ========================================== -->
+  <g transform="translate(80, 420)" filter="url(#dropShadow)">
+    <rect width="320" height="200" rx="16" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="2" />
+    
+    <!-- Diagonal Ribbon -->
+    <g clip-path="url(#cardClip)">
+      <g transform="translate(285, 35) rotate(45)">
+        <rect x="-80" y="-40" width="160" height="55" fill="#0f172a" />
+        <line x1="-80" y1="13" x2="80" y2="13" stroke="#10b981" stroke-width="2" />
+        <circle cx="-38" cy="4" r="3.5" fill="#10b981" class="pulse-fast" filter="url(#glow)"/>
+        <text x="0" y="8" class="text-ribbon" fill="#10b981" text-anchor="middle">EXTRACT</text>
+      </g>
+    </g>
+    
+    <rect x="24" y="24" width="56" height="56" rx="14" fill="#10b981" opacity="0.15" />
+    <g transform="translate(34, 28)">
+      <polygon points="0,0 36,0 22,20 22,40 14,40 14,20" fill="none" stroke="#10b981" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="4" y1="8" x2="32" y2="8" stroke="#10b981" stroke-width="2" class="scan-line" />
+      <circle cx="18" cy="48" r="3" fill="#10b981" filter="url(#glow)" />
+    </g>
+
+    <text x="100" y="46" class="text-title">6. Data Parsing</text>
+    <text x="100" y="68" class="text-desc" fill="#10b981">DOM Selectors &amp; Regex</text>
+
+    <line x1="24" y1="104" x2="296" y2="104" stroke="#1e293b" stroke-width="1.5" />
+
+    <g transform="translate(24, 130)">
+      <circle cx="6" cy="0" r="3.5" fill="#10b981" />
+      <text x="20" y="5" class="text-list">Traverses DOM tree structures</text>
+      <circle cx="6" cy="24" r="3.5" fill="#10b981" />
+      <text x="20" y="29" class="text-list">Targets highly specific CSS classes</text>
+      <circle cx="6" cy="48" r="3.5" fill="#10b981" />
+      <text x="20" y="53" class="text-list">Cleans &amp; normalizes unstructured text</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- NODE 7: STRUCTURED OUTPUT                  -->
+  <!-- ========================================== -->
+  <g transform="translate(490, 700)" filter="url(#dropShadow)">
+    <rect width="320" height="200" rx="16" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="2" />
+    
+    <!-- Diagonal Ribbon -->
+    <g clip-path="url(#cardClip)">
+      <g transform="translate(285, 35) rotate(45)">
+        <rect x="-80" y="-40" width="160" height="55" fill="#0f172a" />
+        <line x1="-80" y1="13" x2="80" y2="13" stroke="#a3e635" stroke-width="2" />
+        <circle cx="-35" cy="4" r="3.5" fill="#a3e635" filter="url(#glow)" />
+        <text x="0" y="8" class="text-ribbon" fill="#a3e635" text-anchor="middle">SAVED</text>
+      </g>
+    </g>
+    
+    <rect x="24" y="24" width="56" height="56" rx="14" fill="#a3e635" opacity="0.15" />
+    <g transform="translate(36, 32)">
+      <rect x="0" y="0" width="32" height="40" rx="3" fill="none" stroke="#a3e635" stroke-width="2" />
+      <line x1="0" y1="12" x2="32" y2="12" stroke="#a3e635" stroke-width="2" />
+      <line x1="0" y1="24" x2="32" y2="24" stroke="#a3e635" stroke-width="2" />
+      <line x1="12" y1="12" x2="12" y2="40" stroke="#a3e635" stroke-width="2" />
+      <rect x="-6" y="-6" width="22" height="14" rx="3" fill="#1e293b" stroke="#a3e635" stroke-width="1.5" />
+      <text x="5" y="4" font-size="8" font-family="monospace" font-weight="bold" fill="#a3e635" text-anchor="middle">CSV</text>
+    </g>
+
+    <text x="100" y="46" class="text-title">7. Structured Data</text>
+    <text x="100" y="68" class="text-desc" fill="#a3e635">Filesystem &amp; Database</text>
+
+    <line x1="24" y1="104" x2="296" y2="104" stroke="#1e293b" stroke-width="1.5" />
+
+    <g transform="translate(24, 130)">
+      <circle cx="6" cy="0" r="3.5" fill="#a3e635" />
+      <text x="20" y="5" class="text-list">Compiles isolated arrays into columns</text>
+      <circle cx="6" cy="24" r="3.5" fill="#a3e635" />
+      <text x="20" y="29" class="text-list">Exports native CSV / JSON payloads</text>
+      <circle cx="6" cy="48" r="3.5" fill="#a3e635" />
+      <text x="20" y="53" class="text-list">Ingests directly into Cloud Data Lakes</text>
+    </g>
+  </g>
+
+</svg>

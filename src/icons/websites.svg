@@ -1,0 +1,161 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="finalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="imgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:1" />
+    </linearGradient>
+
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur"/>
+      <feOffset dx="8" dy="10" result="offsetBlur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <style>
+    /* ANIMATION ORCHESTRATION */
+    .layer { opacity: 0; animation-duration: 12s; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+    
+    .layer-blueprint { animation-name: showBlueprint; }
+    .layer-wireframe { animation-name: showWireframe; }
+    .layer-final { animation-name: showFinal; }
+
+    /* Progress Bar Fix: Use scaleX and transform-origin to prevent overflow */
+    .progress-fill { 
+      animation: loadProgress 12s linear infinite; 
+      transform-origin: left;
+    }
+    
+    .browser-window { animation: float 6s ease-in-out infinite; }
+    
+    @keyframes showBlueprint {
+      0% { opacity: 0; transform: translateY(10px); }
+      5%, 30% { opacity: 1; transform: translateY(0); }
+      35%, 100% { opacity: 0; }
+    }
+    
+    @keyframes showWireframe {
+      0%, 30% { opacity: 0; transform: translateY(10px); }
+      35%, 60% { opacity: 1; transform: translateY(0); }
+      65%, 100% { opacity: 0; }
+    }
+    
+    @keyframes showFinal {
+      0%, 60% { opacity: 0; transform: translateY(10px); }
+      65%, 95% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; }
+    }
+
+    @keyframes loadProgress {
+      0% { transform: scaleX(0); fill: #3b82f6; }       /* Blueprint Blue */
+      33% { transform: scaleX(0.33); fill: #3b82f6; }
+      34% { fill: #64748b; }                            /* Switch to Wireframe Slate */
+      66% { transform: scaleX(0.66); fill: #64748b; }
+      67% { fill: #6366f1; }                            /* Switch to Final Indigo */
+      100% { transform: scaleX(1); fill: #6366f1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(400px, 300px); }
+      50% { transform: translate(400px, 290px); }
+    }
+  </style>
+
+  <g transform="translate(400, 100) scale(1, 0.5) rotate(45)">
+     <rect x="-1000" y="-1000" width="2000" height="2000" fill="url(#gridPattern)" opacity="0.6"/>
+  </g>
+
+  <g class="browser-window">
+    <g transform="skewY(-10) rotate(-10)">
+      <path d="M-280,-200 L280,-200 L280,200 L-280,200 Z" fill="#000" opacity="0.1" transform="translate(20, 30)" filter="url(#softShadow)"/>
+      <path d="M-280,200 L280,200 L280,210 L-280,210 Z" fill="#e2e8f0"/> 
+      <path d="M280,-200 L280,200 L290,210 L290,-190 Z" fill="#cbd5e1"/> 
+
+      <rect x="-280" y="-200" width="560" height="400" fill="#ffffff" rx="4"/>
+      
+      <path d="M-280,-200 L280,-200 L280,-160 L-280,-160 Z" fill="#f1f5f9"/>
+      <circle cx="-250" cy="-180" r="6" fill="#ef4444" />
+      <circle cx="-230" cy="-180" r="6" fill="#f59e0b" />
+      <circle cx="-210" cy="-180" r="6" fill="#10b981" />
+      <rect x="-180" y="-188" width="300" height="16" rx="8" fill="#e2e8f0"/>
+
+      <g transform="translate(-250, -120)">
+        <g class="layer layer-blueprint">
+          <rect x="0" y="0" width="500" height="300" fill="url(#gridPattern)" opacity="0.5"/>
+          <g stroke="#3b82f6" stroke-width="2" stroke-dasharray="8,4" fill="none">
+             <rect x="0" y="0" width="500" height="40"/>
+             <rect x="20" y="80" width="220" height="120"/>
+             <rect x="20" y="220" width="120" height="40" rx="20"/>
+             <rect x="280" y="60" width="200" height="200"/>
+             <line x1="280" y1="60" x2="480" y2="260"/>
+             <line x1="480" y1="60" x2="280" y2="260"/>
+          </g>
+          <text x="290" y="50" font-family="monospace" fill="#3b82f6" font-size="12">IMG_ASSET_01</text>
+          <text x="20" y="70" font-family="monospace" fill="#3b82f6" font-size="12">H1_HEADER</text>
+        </g>
+
+        <g class="layer layer-wireframe">
+           <rect x="0" y="0" width="500" height="40" fill="#f8fafc" stroke="#cbd5e1"/>
+           <rect x="20" y="12" width="80" height="16" fill="#94a3b8"/> 
+           <rect x="350" y="12" width="130" height="16" fill="#e2e8f0"/> 
+           <rect x="20" y="80" width="200" height="24" fill="#64748b"/> 
+           <rect x="20" y="110" width="160" height="24" fill="#64748b"/> 
+           <rect x="20" y="150" width="220" height="10" fill="#cbd5e1"/> 
+           <rect x="20" y="165" width="200" height="10" fill="#cbd5e1"/> 
+           <rect x="20" y="180" width="140" height="10" fill="#cbd5e1"/> 
+           <rect x="20" y="220" width="140" height="45" rx="4" fill="#94a3b8"/>
+           <rect x="280" y="60" width="200" height="200" fill="#e2e8f0" stroke="#cbd5e1"/>
+           <path d="M330,160 L380,110 L430,160" fill="none" stroke="#94a3b8" stroke-width="3"/>
+           <circle cx="430" cy="100" r="15" fill="#cbd5e1"/>
+        </g>
+
+        <g class="layer layer-final">
+           <rect x="0" y="0" width="500" height="40" fill="#ffffff" filter="url(#softShadow)"/>
+           <text x="20" y="25" font-family="Arial, sans-serif" font-weight="bold" font-size="18" fill="#1e293b">VECTRA.</text>
+           <text x="360" y="25" font-family="Arial, sans-serif" font-size="12" fill="#64748b">About  Pricing  Contact</text>
+           <text x="20" y="100" font-family="Arial, sans-serif" font-weight="bold" font-size="28" fill="#1e293b">Build the Future.</text>
+           <text x="20" y="135" font-family="Arial, sans-serif" font-size="28" fill="#6366f1">Pixel Perfect.</text>
+           <text x="20" y="170" font-family="Arial, sans-serif" font-size="14" fill="#64748b">From concept to deployment, we automate</text>
+           <text x="20" y="188" font-family="Arial, sans-serif" font-size="14" fill="#64748b">your entire web design workflow.</text>
+           <g transform="translate(20, 220)">
+             <rect width="140" height="45" rx="22.5" fill="url(#finalGradient)" filter="url(#softShadow)"/>
+             <text x="70" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" fill="white" font-size="14">GET STARTED</text>
+           </g>
+           <g transform="translate(280, 60)" filter="url(#softShadow)">
+              <rect width="200" height="200" rx="10" fill="white"/>
+              <rect width="200" height="120" rx="10" fill="url(#imgGradient)"/>
+              <rect y="100" width="200" height="20" fill="url(#imgGradient)"/>
+              <circle cx="100" cy="60" r="30" fill="white" opacity="0.3"/>
+              <circle cx="100" cy="60" r="15" fill="white"/>
+              <rect x="20" y="140" width="100" height="10" rx="5" fill="#e2e8f0"/>
+              <rect x="20" y="160" width="160" height="10" rx="5" fill="#f1f5f9"/>
+              <rect x="140" y="140" width="40" height="10" rx="5" fill="#bae6fd"/>
+           </g>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(250, 520)">
+    <text x="150" y="-15" text-anchor="middle" font-family="monospace" font-size="12" fill="#64748b" letter-spacing="2">
+       CONSTRUCTION PROGRESS
+    </text>
+    <rect x="0" y="0" width="300" height="6" rx="3" fill="#e2e8f0"/>
+    <rect x="0" y="0" width="300" height="6" rx="3" class="progress-fill"/>
+  </g>
+</svg>

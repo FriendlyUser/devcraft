@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+    <defs>
+        <!-- Soft Drop Shadow for the Browser Window -->
+        <filter id="window-shadow" x="-5%" y="-5%" width="110%" height="110%">
+            <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.06"/>
+        </filter>
+
+        <!-- The Geometric Flower Bouquet -->
+        <g id="bouquet">
+            <!-- Stems -->
+            <path d="M 0 20 C -4 12 -12 4 -16 -6 M 0 20 C 4 12 12 6 16 -2 M 0 20 C 0 8 0 -4 4 -16" stroke="#84A59D" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- Leaves -->
+            <polygon points="-6,10 -12,14 -6,18 -2,14" fill="#84A59D"/>
+            <polygon points="8,14 16,12 12,20 4,18" fill="#84A59D"/>
+            <!-- Left Flower -->
+            <g transform="translate(-16, -6)">
+                <path d="M 0 -8 L 8 0 L 0 8 L -8 0 Z" fill="#E76F51"/>
+                <circle cx="0" cy="0" r="3" fill="#FFB4A2"/>
+            </g>
+            <!-- Right Flower -->
+            <g transform="translate(16, -2)">
+                <polygon points="0,-10 9,-3 6,8 -6,8 -9,-3" fill="#FF9F9F"/>
+                <circle cx="0" cy="0" r="4" fill="#E76F51"/>
+            </g>
+            <!-- Top Center Flower -->
+            <g transform="translate(4, -16)">
+                <polygon points="0,-12 10,-4 6,10 -6,10 -10,-4" fill="#F4A261"/>
+                <circle cx="0" cy="0" r="5" fill="#FF9F9F"/>
+            </g>
+        </g>
+
+        <!-- Girl Body Base (Shared) -->
+        <g id="girl-body">
+            <!-- Neck -->
+            <rect x="-4" y="-40" width="8" height="15" fill="#FCD5CE"/>
+            
+            <!-- Back Hair (Provides solid volume behind the neck and face) -->
+            <rect x="-18" y="-55" width="36" height="40" rx="10" fill="#111827"/>
+            
+            <!-- Face -->
+            <circle cx="0" cy="-55" r="20" fill="#FDE2E4"/>
+            
+            <!-- Face Details: Eyes & Blush -->
+            <circle cx="-13" cy="-48" r="3.5" fill="#FFB4A2" opacity="0.6"/>
+            <circle cx="13" cy="-48" r="3.5" fill="#FFB4A2" opacity="0.6"/>
+            <circle cx="-8" cy="-53" r="2.5" fill="#1F2937"/>
+            <circle cx="8" cy="-53" r="2.5" fill="#1F2937"/>
+            
+            <!-- Front Hair / Bangs (Overlaps forehead gracefully) -->
+            <path d="M -21 -50 C -21 -78 21 -78 21 -50 C 15 -60 5 -60 0 -58 C -5 -60 -15 -60 -21 -50 Z" fill="#1F2937"/>
+            
+            <!-- Side Hair / Bob Cut Ends -->
+            <path d="M -21 -50 L -23 -18 C -23 -13 -15 -13 -15 -18 L -15 -45 Z" fill="#1F2937"/>
+            <path d="M 21 -50 L 23 -18 C 23 -13 15 -13 15 -18 L 15 -45 Z" fill="#1F2937"/>
+            
+            <!-- Dress -->
+            <path d="M -16 -20 L 16 -20 L 35 65 L -35 65 Z" fill="#5A7D7C"/>
+            
+            <!-- Legs -->
+            <rect x="-12" y="65" width="8" height="35" fill="#FDE2E4"/>
+            <rect x="4" y="65" width="8" height="35" fill="#FDE2E4"/>
+            
+            <!-- Shoes -->
+            <path d="M -12 100 L -4 100 L 0 110 L -16 110 Z" fill="#1F2937"/>
+            <path d="M 4 100 L 12 100 L 16 110 L 0 110 Z" fill="#1F2937"/>
+        </g>
+    </defs>
+
+    <style>
+        /* Typography styles */
+        .title-text { font-family: system-ui, -apple-system, sans-serif; font-weight: 800; font-size: 26px; fill: #1F2937; letter-spacing: 2px; }
+        .subtitle-text { font-family: system-ui, -apple-system, sans-serif; font-weight: 700; font-size: 26px; fill: #5A7D7C; letter-spacing: 2px; }
+
+        /* Animation Keyframes for 10-second Seamless Loop */
+        
+        /* 1. Left Flowers Vanish & Bloom */
+        @keyframes vanishLeftFlowers {
+            0%, 15% { transform: translate(171px, 268px) scale(1) rotate(0deg); opacity: 1; animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+            25%, 90% { transform: translate(171px, 268px) scale(0) rotate(-45deg); opacity: 0; }
+            95%, 100% { transform: translate(171px, 268px) scale(1) rotate(0deg); opacity: 1; animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        }
+
+        /* 2. Left Girl Dissolve */
+        @keyframes teleportLeftGirl {
+            0%, 25% { opacity: 1; transform: translate(200px, 270px) scale(1); animation-timing-function: ease-out; }
+            30%, 90% { opacity: 0; transform: translate(200px, 270px) scale(0.92); }
+            95%, 100% { opacity: 1; transform: translate(200px, 270px) scale(1); animation-timing-function: ease-in; }
+        }
+
+        /* 3. Teleport Particles (Rapid Translation Back and Forth) */
+        @keyframes particlesFly {
+            0%, 28% { opacity: 0; transform: translate(200px, 270px) scale(0.5) rotate(0deg); }
+            29% { opacity: 1; transform: translate(200px, 270px) scale(1.2) rotate(45deg); animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+            34% { opacity: 1; transform: translate(600px, 270px) scale(1.2) rotate(180deg); animation-timing-function: ease-out; }
+            35%, 83% { opacity: 0; transform: translate(600px, 270px) scale(0.5) rotate(180deg); }
+            84% { opacity: 1; transform: translate(600px, 270px) scale(1.2) rotate(180deg); animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+            89% { opacity: 1; transform: translate(200px, 270px) scale(1.2) rotate(360deg); animation-timing-function: ease-out; }
+            90%, 100% { opacity: 0; transform: translate(200px, 270px) scale(0.5) rotate(360deg); }
+        }
+
+        /* 4. Right Girl Appear & Dissolve */
+        @keyframes teleportRightGirl {
+            0%, 35% { opacity: 0; transform: translate(600px, 270px) scale(0.92); animation-timing-function: ease-out; }
+            40%, 80% { opacity: 1; transform: translate(600px, 270px) scale(1); animation-timing-function: ease-in; }
+            85%, 100% { opacity: 0; transform: translate(600px, 270px) scale(0.92); }
+        }
+
+        /* 5. Right Arm Raising Gesture */
+        @keyframes raiseRightArm {
+            0%, 40% { transform: rotate(0deg); animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+            50%, 75% { transform: rotate(-135deg); animation-timing-function: ease-in-out; }
+            80%, 100% { transform: rotate(0deg); }
+        }
+
+        /* 6. Right Flowers Bloom & Vanish (Coordinates adjusted to exactly match the raised hand position) */
+        @keyframes vanishRightFlowers {
+            0%, 50% { transform: translate(640px, 211px) scale(0) rotate(45deg); opacity: 0; animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+            60%, 70% { transform: translate(640px, 211px) scale(1) rotate(15deg); opacity: 1; animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+            75%, 100% { transform: translate(640px, 211px) scale(0) rotate(-45deg); opacity: 0; }
+        }
+
+        /* Assigning Classes & Aligning the Transform Origin to the Bouquet's Base (0, 20) */
+        .left-flowers { transform-origin: 0px 20px; animation: vanishLeftFlowers 10s infinite; }
+        .left-girl { transform-origin: 200px 270px; animation: teleportLeftGirl 10s infinite; }
+        .teleport-group { animation: particlesFly 10s infinite; }
+        .right-girl { transform-origin: 600px 270px; animation: teleportRightGirl 10s infinite; }
+        .right-arm-group { transform-origin: 14px -14px; animation: raiseRightArm 10s infinite; }
+        .right-flowers { transform-origin: 0px 20px; animation: vanishRightFlowers 10s infinite; }
+    </style>
+
+    <!-- Background Canvas -->
+    <rect width="800" height="500" fill="#FDF6E3"/>
+
+    <!-- Browser Window Frame -->
+    <g transform="translate(40, 40)" filter="url(#window-shadow)">
+        <!-- Main Window Base -->
+        <rect width="720" height="420" rx="12" fill="#FFFFFF"/>
+        
+        <!-- Top Bar -->
+        <path d="M 0 12 C 0 5.373 5.373 0 12 0 L 708 0 C 714.627 0 720 5.373 720 12 L 720 40 L 0 40 Z" fill="#F3F4F6"/>
+        
+        <!-- Mac-style Control Dots -->
+        <circle cx="24" cy="20" r="6" fill="#FF5F56"/>
+        <circle cx="44" cy="20" r="6" fill="#FFBD2E"/>
+        <circle cx="64" cy="20" r="6" fill="#27C93F"/>
+
+        <!-- Subtle Address Bar -->
+        <rect x="200" y="10" width="320" height="20" rx="10" fill="#E5E7EB" opacity="0.5"/>
+        
+        <!-- Window Content Divider -->
+        <line x1="0" y1="40" x2="720" y2="40" stroke="#E5E7EB" stroke-width="1"/>
+    </g>
+
+    <!-- Typography Header -->
+    <text x="400" y="125" text-anchor="middle">
+        <tspan class="title-text">CSS WEB ANIMATIONS: </tspan>
+        <tspan class="subtitle-text">ELEGANT.</tspan>
+    </text>
+    <!-- Decorative Underline Element -->
+    <line x1="360" y1="145" x2="440" y2="145" stroke="#E5E7EB" stroke-width="2"/>
+    <polygon points="400,142 404,145 400,148 396,145" fill="#F4A261"/>
+
+    <!-- Ground Floor Line -->
+    <line x1="120" y1="380" x2="680" y2="380" stroke="#E5E7EB" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- ========================================== -->
+    <!-- ANIMATION LAYER: LEFT AVATAR & FLOWERS     -->
+    <!-- ========================================== -->
+
+    <!-- Left Flowers (Held in Right Hand) -->
+    <g class="left-flowers">
+        <use href="#bouquet" x="0" y="0"/>
+    </g>
+
+    <!-- Left Girl Base -->
+    <g class="left-girl">
+        <use href="#girl-body"/>
+        <!-- Right Arm (Left side of viewer, angled up to hold flowers) -->
+        <rect x="-18" y="-18" width="8" height="40" rx="4" fill="#FDE2E4" transform="rotate(25, -14, -14)"/>
+        <!-- Left Arm (Right side of viewer, idle) -->
+        <rect x="10" y="-18" width="8" height="40" rx="4" fill="#FDE2E4" transform="rotate(-12, 14, -14)"/>
+    </g>
+
+    <!-- ========================================== -->
+    <!-- ANIMATION LAYER: TELEPORT PARTICLES        -->
+    <!-- ========================================== -->
+    
+    <g class="teleport-group">
+        <!-- Collection of geometric shapes for teleport burst -->
+        <rect x="-15" y="-40" width="12" height="12" fill="#5A7D7C"/>
+        <circle cx="20" cy="-20" r="8" fill="#FF9F9F"/>
+        <polygon points="-25,10 -15,5 -20,15" fill="#1F2937"/>
+        <circle cx="5" cy="30" r="10" fill="#FDE2E4"/>
+        <rect x="25" y="15" width="10" height="10" fill="#E76F51"/>
+        <polygon points="-5,-60 5,-65 0,-50" fill="#F4A261"/>
+        <circle cx="-25" cy="-25" r="5" fill="#5A7D7C"/>
+        <rect x="-30" y="30" width="8" height="8" fill="#FFB4A2"/>
+        <polygon points="15,55 25,60 20,45" fill="#1F2937"/>
+        <circle cx="35" cy="-5" r="4" fill="#E76F51"/>
+        <rect x="-10" y="70" width="14" height="14" fill="#5A7D7C"/>
+        <circle cx="-35" cy="50" r="6" fill="#FDE2E4"/>
+    </g>
+
+    <!-- ========================================== -->
+    <!-- ANIMATION LAYER: RIGHT AVATAR & FLOWERS    -->
+    <!-- ========================================== -->
+
+    <!-- Right Girl Base -->
+    <g class="right-girl">
+        <use href="#girl-body"/>
+        <!-- Right Arm (Left side of viewer, idle) -->
+        <rect x="-18" y="-18" width="8" height="40" rx="4" fill="#FDE2E4" transform="rotate(12, -14, -14)"/>
+        
+        <!-- Left Arm (Right side of viewer, animated gesture) -->
+        <g class="right-arm-group">
+            <rect x="10" y="-18" width="8" height="40" rx="4" fill="#FDE2E4"/>
+        </g>
+    </g>
+
+    <!-- Right Flowers (Blooming exactly in the raised hand) -->
+    <g class="right-flowers">
+        <use href="#bouquet" x="0" y="0"/>
+    </g>
+
+</svg>

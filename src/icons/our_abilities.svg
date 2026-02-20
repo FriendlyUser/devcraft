@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" width="100%" height="100%">
+    <defs>
+        <radialGradient id="bg-grad" cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="#162235"/>
+            <stop offset="100%" stop-color="#070a11"/>
+        </radialGradient>
+
+        <linearGradient id="hex-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2fe"/>
+            <stop offset="100%" stop-color="#4facfe"/>
+        </linearGradient>
+
+        <linearGradient id="time-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff0844"/>
+            <stop offset="100%" stop-color="#ffb199"/>
+        </linearGradient>
+
+        <linearGradient id="budget-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f6d365"/>
+            <stop offset="100%" stop-color="#fda085"/>
+        </linearGradient>
+
+        <linearGradient id="check-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00ff87"/>
+            <stop offset="100%" stop-color="#60efff"/>
+        </linearGradient>
+
+        <filter id="glow-green" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="15" result="blur"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+
+        <filter id="glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="10" result="blur"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+        
+        <filter id="glow-budget" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="8" result="blur"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+        </filter>
+
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+        </pattern>
+    </defs>
+
+    <style>
+        .font-sys { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        .node { fill: url(#hex-grad); }
+
+        /* Initial states for animated elements */
+        .fade-in-up, .pop-in { opacity: 0; }
+        .draw-check {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
+        }
+
+        /* Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .draw-check {
+            animation: drawCheck 1s ease-out forwards;
+        }
+        
+        .pop-in {
+            transform-origin: center;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        /* Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+
+    <rect width="1000" height="800" fill="url(#bg-grad)"/>
+    <rect width="1000" height="800" fill="url(#grid)"/>
+
+    <g transform="translate(0, -20)">
+        <polygon points="500,150 716.5,275 716.5,525 500,650 283.5,525 283.5,275" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="4"/>
+        <polygon points="500,170 699,285 699,515 500,630 301,515 301,285" fill="rgba(0, 242, 254, 0.02)" stroke="url(#hex-grad)" stroke-width="1" stroke-dasharray="10 10"/>
+        <polygon points="500,190 681.5,295 681.5,505 500,610 318.5,505 318.5,295" fill="none" stroke="url(#hex-grad)" stroke-width="1" stroke-dasharray="4 12" opacity="0.5"/>
+    </g>
+
+    <g>
+        <circle cx="500" cy="380" r="35" fill="#0b0f19" stroke="url(#hex-grad)" stroke-width="6"/>
+        <circle cx="500" cy="380" r="20" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 4" opacity="0.6"/>
+        <circle cx="500" cy="380" r="8" fill="url(#check-grad)" filter="url(#glow-green)"/>
+        <circle cx="500" cy="380" r="80" stroke="rgba(0, 242, 254, 0.2)" stroke-width="1.5" fill="none" stroke-dasharray="6 6"/>
+        <circle cx="500" cy="380" r="140" stroke="rgba(0, 242, 254, 0.08)" stroke-width="1" fill="none"/>
+    </g>
+
+    <g class="fade-in-up" style="animation-delay: 0.5s;">
+        <path d="M 470 355 L 420 305 L 390 305" fill="none" stroke="url(#hex-grad)" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="470" cy="355" r="4" class="node"/>
+        <circle cx="420" cy="305" r="4" class="node"/>
+        <circle cx="390" cy="305" r="4" class="node"/>
+
+        <g stroke="url(#hex-grad)" stroke-width="12" stroke-linecap="round">
+            <line x1="350" y1="200" x2="350" y2="320" />
+            <line x1="290" y1="260" x2="410" y2="260" />
+            <line x1="307" y1="217" x2="393" y2="303" />
+            <line x1="307" y1="303" x2="393" y2="217" />
+        </g>
+        <circle cx="350" cy="260" r="45" fill="#0b0f19" />
+        <circle cx="350" cy="260" r="35" fill="none" stroke="url(#hex-grad)" stroke-width="8" stroke-dasharray="12 6" filter="url(#glow-cyan)"/>
+        <circle cx="350" cy="260" r="15" fill="none" stroke="url(#hex-grad)" stroke-width="4" />
+        <circle cx="350" cy="260" r="6" fill="url(#hex-grad)" />
+
+        <g stroke="url(#hex-grad)" stroke-width="8" stroke-linecap="round" opacity="0.8">
+            <line x1="420" y1="160" x2="420" y2="240" />
+            <line x1="380" y1="200" x2="460" y2="200" />
+            <line x1="392" y1="172" x2="448" y2="228" />
+            <line x1="392" y1="228" x2="448" y2="172" />
+        </g>
+        <circle cx="420" cy="200" r="28" fill="#0b0f19" />
+        <circle cx="420" cy="200" r="20" fill="none" stroke="url(#hex-grad)" stroke-width="5" stroke-dasharray="8 5"/>
+        <circle cx="420" cy="200" r="8" fill="url(#hex-grad)" />
+
+        <rect x="280" y="340" width="140" height="30" rx="15" fill="rgba(0,242,254,0.1)" stroke="url(#hex-grad)" stroke-width="1"/>
+        <text x="350" y="360" fill="#fff" class="font-sys" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="1">COMPLEX SCOPE</text>
+    </g>
+
+    <g class="fade-in-up" style="animation-delay: 1.0s;">
+        <path d="M 480 405 L 430 455 L 370 455 L 350 475" fill="none" stroke="url(#time-grad)" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="480" cy="405" r="4" fill="url(#time-grad)"/>
+        <circle cx="430" cy="455" r="4" fill="url(#time-grad)"/>
+        <circle cx="370" cy="455" r="4" fill="url(#time-grad)"/>
+        <circle cx="350" cy="475" r="4" fill="url(#time-grad)"/>
+
+        <rect x="322" y="445" width="16" height="20" fill="url(#time-grad)" rx="4"/>
+        <circle cx="330" cy="435" r="12" fill="none" stroke="url(#time-grad)" stroke-width="4"/>
+        <rect x="375" y="460" width="12" height="12" transform="rotate(45 375 460)" fill="url(#time-grad)" rx="2"/>
+        <circle cx="330" cy="520" r="55" fill="#0b0f19" stroke="url(#time-grad)" stroke-width="8"/>
+        
+        <path d="M 330 465 A 55 55 0 0 1 385 520" fill="none" stroke="url(#time-grad)" stroke-width="8" stroke-linecap="round" filter="url(#glow-budget)"/>
+
+        <circle cx="330" cy="520" r="42" fill="none" stroke="url(#time-grad)" stroke-width="3" stroke-dasharray="2 6.79"/>
+        <line x1="330" y1="520" x2="330" y2="485" stroke="url(#time-grad)" stroke-width="5" stroke-linecap="round"/>
+        <line x1="330" y1="520" x2="360" y2="500" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="330" cy="520" r="6" fill="#fff"/>
+
+        <rect x="260" y="600" width="140" height="30" rx="15" fill="rgba(255,8,68,0.1)" stroke="url(#time-grad)" stroke-width="1"/>
+        <text x="330" y="620" fill="#fff" class="font-sys" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="1">ON TIME</text>
+    </g>
+
+    <g class="fade-in-up" style="animation-delay: 1.5s;">
+        <path d="M 520 405 L 570 455 L 630 455 L 650 475" fill="none" stroke="url(#budget-grad)" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="520" cy="405" r="4" fill="url(#budget-grad)"/>
+        <circle cx="570" cy="455" r="4" fill="url(#budget-grad)"/>
+        <circle cx="630" cy="455" r="4" fill="url(#budget-grad)"/>
+        <circle cx="650" cy="475" r="4" fill="url(#budget-grad)"/>
+
+        <circle cx="670" cy="520" r="55" fill="#0b0f19" stroke="url(#budget-grad)" stroke-width="8" filter="url(#glow-budget)"/>
+        <circle cx="670" cy="520" r="44" fill="none" stroke="url(#budget-grad)" stroke-width="2" stroke-dasharray="6 5"/>
+        
+        <rect x="643" y="525" width="10" height="20" fill="rgba(255,255,255,0.15)" rx="2"/>
+        <rect x="660" y="505" width="10" height="40" fill="rgba(255,255,255,0.15)" rx="2"/>
+        <rect x="677" y="480" width="10" height="65" fill="rgba(255,255,255,0.15)" rx="2"/>
+
+        <text x="670" y="546" fill="url(#budget-grad)" class="font-sys" font-weight="900" font-size="65" text-anchor="middle">$</text>
+
+        <path d="M 610 470 L 615 460 L 625 455 L 615 450 L 610 440 L 605 450 L 595 455 L 605 460 Z" fill="url(#budget-grad)"/>
+
+        <rect x="600" y="600" width="140" height="30" rx="15" fill="rgba(246,211,101,0.1)" stroke="url(#budget-grad)" stroke-width="1"/>
+        <text x="670" y="620" fill="#fff" class="font-sys" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="1">ON BUDGET</text>
+    </g>
+
+    <g>
+        <path class="draw-check" style="animation-delay: 2.5s;" d="M 420 400 L 490 470 L 730 200" fill="none" stroke="url(#check-grad)" stroke-width="60" stroke-linecap="round" stroke-linejoin="round" opacity="0.15" filter="url(#glow-green)"/>
+        
+        <path class="draw-check" style="animation-delay: 2.5s;" d="M 420 400 L 490 470 L 730 200" fill="none" stroke="url(#check-grad)" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <path class="draw-check" style="animation-delay: 2.5s;" d="M 420 400 L 490 470 L 730 200" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+    </g>
+
+    <g class="pop-in" style="animation-delay: 3.5s;">
+        <text x="730" y="150" fill="url(#check-grad)" class="font-sys" font-weight="900" font-size="32" text-anchor="end" letter-spacing="4" filter="url(#glow-green)">COMPLETED</text>
+        <text x="730" y="175" fill="#ffffff" class="font-sys" font-weight="600" font-size="14" text-anchor="end" letter-spacing="6" opacity="0.8">SUCCESSFULLY</text>
+
+        <circle cx="760" cy="240" r="5" fill="url(#budget-grad)" filter="url(#glow-budget)"/>
+        <circle cx="700" cy="110" r="4" fill="url(#check-grad)" filter="url(#glow-green)"/>
+        <circle cx="430" cy="350" r="3" fill="#ffffff" opacity="0.5"/>
+        <polygon points="650,230 654,238 662,240 656,246 658,254 650,250 642,254 644,246 638,240 646,238" fill="url(#time-grad)"/>
+        <polygon points="460,520 462,525 467,526 463,530 464,535 460,532 456,535 457,530 453,526 458,525" fill="url(#hex-grad)"/>
+    </g>
+</svg>

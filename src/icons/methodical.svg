@@ -1,0 +1,333 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="100%" height="100%">
+    <defs>
+        <!-- Background Gradient -->
+        <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e1b4b" />
+            <stop offset="100%" stop-color="#020617" />
+        </radialGradient>
+
+        <!-- Sun Gradients -->
+        <linearGradient id="sun-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fbbf24" />
+            <stop offset="100%" stop-color="#ea580c" />
+        </linearGradient>
+
+        <!-- Planet Gradients -->
+        <linearGradient id="planet-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c084fc" />
+            <stop offset="100%" stop-color="#7e22ce" />
+        </linearGradient>
+        <linearGradient id="planet-pink" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fb7185" />
+            <stop offset="100%" stop-color="#be185d" />
+        </linearGradient>
+        <linearGradient id="planet-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#60a5fa" />
+            <stop offset="100%" stop-color="#1d4ed8" />
+        </linearGradient>
+
+        <!-- Orbit Fade Gradients (for smooth transition from chaos to order) -->
+        <linearGradient id="orbit-grad-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="10%" stop-color="#a855f7" stop-opacity="0.1" />
+            <stop offset="80%" stop-color="#a855f7" stop-opacity="1" />
+        </linearGradient>
+        <linearGradient id="orbit-grad-pink" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="10%" stop-color="#f472b6" stop-opacity="0.1" />
+            <stop offset="80%" stop-color="#f472b6" stop-opacity="1" />
+        </linearGradient>
+        <linearGradient id="orbit-grad-blue" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="10%" stop-color="#3b82f6" stop-opacity="0.1" />
+            <stop offset="80%" stop-color="#3b82f6" stop-opacity="1" />
+        </linearGradient>
+
+        <!-- Reusable Clutter Shapes (Isometric Flat UI) -->
+        <!-- Gray Neutral Block -->
+        <g id="iso-cube-gray">
+            <polygon points="0,0 15,-8 30,0 15,8" fill="#e2e8f0" />
+            <polygon points="0,0 15,8 15,25 0,17" fill="#64748b" />
+            <polygon points="30,0 15,8 15,25 30,17" fill="#94a3b8" />
+        </g>
+        
+        <!-- Tall Prism -->
+        <g id="iso-tall-gray">
+            <polygon points="0,0 12,-6 24,0 12,6" fill="#cbd5e1" />
+            <polygon points="0,0 12,6 12,35 0,29" fill="#475569" />
+            <polygon points="24,0 12,6 12,35 24,29" fill="#64748b" />
+        </g>
+
+        <!-- Flat Document / File -->
+        <g id="iso-doc">
+            <polygon points="0,0 20,-10 35,-2 15,8" fill="#f8fafc" stroke="#94a3b8" stroke-width="1" stroke-linejoin="round"/>
+            <line x1="5" y1="-2" x2="15" y2="-7" stroke="#cbd5e1" stroke-width="1.5"/>
+            <line x1="10" y1="1" x2="25" y2="-6" stroke="#cbd5e1" stroke-width="1.5"/>
+            <line x1="15" y1="4" x2="28" y2="-3" stroke="#cbd5e1" stroke-width="1.5"/>
+        </g>
+
+        <!-- Colored Assembling Blocks -->
+        <g id="iso-cube-purple">
+            <polygon points="0,0 10,-5 20,0 10,5" fill="#d8b4fe" />
+            <polygon points="0,0 10,5 10,16 0,11" fill="#9333ea" />
+            <polygon points="20,0 10,5 10,16 20,11" fill="#a855f7" />
+        </g>
+        <g id="iso-cube-pink">
+            <polygon points="0,0 10,-5 20,0 10,5" fill="#fbcfe8" />
+            <polygon points="0,0 10,5 10,16 0,11" fill="#e11d48" />
+            <polygon points="20,0 10,5 10,16 20,11" fill="#f43f5e" />
+        </g>
+        <g id="iso-cube-blue">
+            <polygon points="0,0 10,-5 20,0 10,5" fill="#bfdbfe" />
+            <polygon points="0,0 10,5 10,16 0,11" fill="#2563eb" />
+            <polygon points="20,0 10,5 10,16 20,11" fill="#3b82f6" />
+        </g>
+
+        <!-- Drop Shadow Template for Orbits -->
+        <ellipse id="shadow-sm" cx="0" cy="0" rx="12" ry="7" fill="#000000" opacity="0.4" />
+        <ellipse id="shadow-md" cx="0" cy="0" rx="18" ry="10" fill="#000000" opacity="0.4" />
+        <ellipse id="shadow-lg" cx="0" cy="0" rx="24" ry="13" fill="#000000" opacity="0.4" />
+    </defs>
+
+    <!-- Base Canvas -->
+    <rect width="1000" height="700" fill="url(#bg-glow)" />
+
+    <!-- Ambient Grid Lines (Flat UI detail) -->
+    <g stroke="#1e293b" stroke-width="1" opacity="0.6">
+        <!-- Concentric base rings to establish perspective -->
+        <ellipse cx="500" cy="400" rx="420" ry="240" fill="none" />
+        <ellipse cx="500" cy="400" rx="350" ry="200" fill="none" />
+        <path d="M 500 160 L 500 640 M 80 400 L 920 400" stroke-dasharray="4 8" />
+        <path d="M 200 226 L 800 574 M 200 574 L 800 226" stroke-dasharray="4 8" />
+    </g>
+
+    <!-- Starfield (Minimal dots) -->
+    <g fill="#f8fafc" opacity="0.3">
+        <circle cx="150" cy="100" r="1" />
+        <circle cx="850" cy="150" r="1.5" />
+        <circle cx="780" cy="600" r="1" />
+        <circle cx="900" cy="350" r="2" opacity="0.1" />
+        <circle cx="300" cy="80" r="1" />
+    </g>
+
+    <!-- ========================================== -->
+    <!-- ORBITS (Chaos fading into Order)           -->
+    <!-- ========================================== -->
+    <g fill="none" stroke-width="2">
+        <!-- Outer Orbit -->
+        <ellipse cx="500" cy="400" rx="280" ry="160" stroke="url(#orbit-grad-blue)" stroke-dasharray="6 6" />
+        <!-- Middle Orbit -->
+        <ellipse cx="500" cy="400" rx="200" ry="115" stroke="url(#orbit-grad-pink)" stroke-dasharray="5 5" />
+        <!-- Inner Orbit -->
+        <ellipse cx="500" cy="400" rx="120" ry="70" stroke="url(#orbit-grad-purple)" stroke-dasharray="4 4" />
+    </g>
+
+    <!-- ========================================== -->
+    <!-- TRAJECTORY LINES (Sorting paths)           -->
+    <!-- ========================================== -->
+    <g fill="none" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.8">
+        <!-- Path to Outer Target -->
+        <path d="M 160 480 Q 200 540 285 502" stroke="#3b82f6" />
+        <!-- Path to Middle Target -->
+        <path d="M 140 300 Q 220 310 312 360" stroke="#f472b6" />
+        <!-- Path to Inner Target -->
+        <path d="M 190 380 Q 280 440 387 423" stroke="#a855f7" />
+    </g>
+
+
+    <!-- ========================================== -->
+    <!-- LAYER 1: SHADOWS ON ORBIT PLANE            -->
+    <!-- ========================================== -->
+    <g>
+        <!-- Sun Shadow -->
+        <ellipse cx="500" cy="400" rx="50" ry="28" fill="#000000" opacity="0.5" />
+        
+        <!-- Organized Planets Shadows -->
+        <use href="#shadow-lg" x="763" y="345" /> <!-- Outer -->
+        <use href="#shadow-md" x="653" y="473" /> <!-- Middle -->
+        <use href="#shadow-sm" x="592" y="355" /> <!-- Inner -->
+
+        <!-- Assembling Target Shadows -->
+        <use href="#shadow-lg" x="285" y="502" /> <!-- Outer Target -->
+        <use href="#shadow-md" x="312" y="360" /> <!-- Middle Target -->
+        <use href="#shadow-sm" x="387" y="423" /> <!-- Inner Target -->
+
+        <!-- Clutter Shadows (Left side base) -->
+        <ellipse cx="140" cy="220" rx="12" ry="6" fill="#000" opacity="0.3" />
+        <ellipse cx="205" cy="265" rx="8" ry="4" fill="#000" opacity="0.3" />
+        <ellipse cx="120" cy="300" rx="15" ry="7" fill="#000" opacity="0.3" />
+        <ellipse cx="170" cy="350" rx="18" ry="9" fill="#000" opacity="0.3" />
+        <ellipse cx="220" cy="420" rx="10" ry="5" fill="#000" opacity="0.3" />
+        <ellipse cx="130" cy="420" rx="20" ry="10" fill="#000" opacity="0.3" />
+        <ellipse cx="170" cy="500" rx="14" ry="7" fill="#000" opacity="0.3" />
+    </g>
+
+
+    <!-- ========================================== -->
+    <!-- LAYER 2: 3D OBJECTS (Strict Z-Order sorting)-->
+    <!-- ========================================== -->
+
+    <!-- Z=200-280: Upper Clutter Field -->
+    <g transform="translate(125, 195) scale(0.9)">
+        <use href="#iso-cube-gray" />
+    </g>
+    <g transform="translate(155, 180) scale(1.1)">
+        <use href="#iso-tall-gray" />
+    </g>
+    <g transform="translate(195, 250) scale(0.8)">
+        <use href="#iso-cube-blue" />
+        <!-- Floating blue elements breaking free -->
+        <use href="#iso-cube-blue" x="20" y="-15" transform="scale(0.6)" />
+    </g>
+    <g transform="translate(100, 280)">
+        <use href="#iso-doc" />
+    </g>
+    <g transform="translate(130, 275) scale(0.8)">
+        <use href="#iso-cube-gray" />
+    </g>
+
+    <!-- Z=345: Outer Organized Planet (Blue) -->
+    <g transform="translate(763, 310)">
+        <circle cx="0" cy="0" r="24" fill="url(#planet-blue)" />
+        <circle cx="0" cy="0" r="24" fill="#ffffff" opacity="0.15" mask="url(#crescent)" />
+        <!-- UI Ring -->
+        <circle cx="0" cy="0" r="32" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="2 4" opacity="0.6"/>
+    </g>
+
+    <!-- Z=355: Inner Organized Planet (Purple) -->
+    <g transform="translate(592, 335)">
+        <circle cx="0" cy="0" r="14" fill="url(#planet-purple)" />
+        <!-- UI Ring -->
+        <circle cx="0" cy="0" r="20" fill="none" stroke="#c084fc" stroke-width="1" stroke-dasharray="2 4" opacity="0.6"/>
+    </g>
+
+    <!-- Z=360: Middle Target (Assembling Pink) -->
+    <g transform="translate(312, 335)">
+        <!-- Projection UI outline -->
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#f472b6" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.8"/>
+        <!-- Forming core -->
+        <circle cx="0" cy="0" r="8" fill="#e11d48" />
+        <!-- Assembling blocks -->
+        <use href="#iso-cube-pink" x="-25" y="-15" transform="scale(0.7)" />
+        <use href="#iso-cube-pink" x="12" y="-18" transform="scale(0.8)" />
+        <use href="#iso-cube-pink" x="-10" y="5" transform="scale(0.6)" />
+    </g>
+
+    <!-- Z=320-380: Mid Clutter Field -->
+    <g transform="translate(80, 330) scale(1)">
+        <use href="#iso-tall-gray" />
+    </g>
+    <g transform="translate(150, 330)">
+        <use href="#iso-cube-pink" />
+        <use href="#iso-cube-pink" x="25" y="10" transform="scale(0.5)" />
+    </g>
+    <g transform="translate(115, 360) scale(1.2)">
+        <use href="#iso-cube-gray" />
+        <use href="#iso-doc" x="15" y="-15" transform="scale(0.7)" />
+    </g>
+
+    <!-- Z=400: THE SUN (Center) -->
+    <g>
+        <!-- Outer Glows -->
+        <circle cx="500" cy="350" r="100" fill="#fbbf24" opacity="0.05" />
+        <circle cx="500" cy="350" r="70" fill="#fbbf24" opacity="0.1" />
+        <!-- Main Body -->
+        <circle cx="500" cy="350" r="45" fill="url(#sun-grad)" />
+        <!-- Tech Ring -->
+        <ellipse cx="500" cy="350" rx="60" ry="60" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.7" />
+        <!-- Subtle highlights -->
+        <path d="M 465 320 Q 500 290 535 320" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+    </g>
+
+    <!-- Z=400-440: Lower Clutter Field -->
+    <g transform="translate(195, 410) scale(0.9)">
+        <use href="#iso-cube-purple" />
+        <use href="#iso-cube-purple" x="-20" y="-10" transform="scale(0.7)" />
+    </g>
+    <g transform="translate(100, 400) scale(0.8)">
+        <use href="#iso-cube-gray" />
+    </g>
+    <g transform="translate(125, 420) scale(1.4)">
+        <use href="#iso-cube-gray" />
+        <!-- Scattered fragments -->
+        <polygon points="35,5 45,-2 40,8" fill="#94a3b8" />
+        <polygon points="-10,15 -5,8 0,18" fill="#64748b" />
+    </g>
+
+    <!-- Z=423: Inner Target (Assembling Purple) -->
+    <g transform="translate(387, 403)">
+        <circle cx="0" cy="0" r="14" fill="none" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.8"/>
+        <circle cx="0" cy="0" r="6" fill="#9333ea" />
+        <use href="#iso-cube-purple" x="-18" y="-12" transform="scale(0.6)" />
+        <use href="#iso-cube-purple" x="8" y="4" transform="scale(0.7)" />
+    </g>
+
+    <!-- Z=473: Middle Organized Planet (Pink) -->
+    <g transform="translate(653, 448)">
+        <circle cx="0" cy="0" r="18" fill="url(#planet-pink)" />
+        <circle cx="0" cy="0" r="26" fill="none" stroke="#fb7185" stroke-width="1" stroke-dasharray="2 4" opacity="0.6"/>
+    </g>
+
+    <!-- Z=480: Lowest Clutter Field -->
+    <g transform="translate(155, 485) scale(1.1)">
+        <use href="#iso-cube-gray" />
+        <use href="#iso-doc" x="-25" y="-5" transform="scale(0.8)" />
+    </g>
+
+    <!-- Z=502: Outer Target (Assembling Blue) -->
+    <g transform="translate(285, 467)">
+        <circle cx="0" cy="0" r="24" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.8"/>
+        <circle cx="0" cy="0" r="12" fill="#2563eb" />
+        <use href="#iso-cube-blue" x="-30" y="-20" transform="scale(0.8)" />
+        <use href="#iso-cube-blue" x="15" y="-25" transform="scale(0.9)" />
+        <use href="#iso-cube-blue" x="-15" y="12" transform="scale(0.7)" />
+        <use href="#iso-cube-blue" x="20" y="8" transform="scale(0.6)" />
+    </g>
+
+    <!-- ========================================== -->
+    <!-- UI OVERLAYS (Clean Design / Tech Dashboard)-->
+    <!-- ========================================== -->
+
+    <!-- Top Left Dashboard -->
+    <g transform="translate(40, 40)">
+        <rect width="320" height="110" rx="8" fill="#0f172a" fill-opacity="0.85" stroke="#334155" stroke-width="1" />
+        <text x="20" y="30" fill="#f8fafc" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 16px; font-weight: bold; letter-spacing: 1px;">SYSTEM ORGANIZATION</text>
+        <text x="20" y="55" fill="#94a3b8" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 12px; letter-spacing: 0.5px;">STATUS: DETECTING CLUTTER &amp; ALIGNING</text>
+        
+        <!-- Progress Bar -->
+        <rect x="20" y="75" width="280" height="4" rx="2" fill="#1e293b" />
+        <rect x="20" y="75" width="180" height="4" rx="2" fill="#10b981" />
+        
+        <circle cx="20" cy="95" r="4" fill="#10b981" />
+        <text x="32" y="99" fill="#10b981" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 0.5px;">ORBITAL ASSEMBLY IN PROGRESS</text>
+    </g>
+
+    <!-- Bottom Left Clutter Analysis Bounding Boxes -->
+    <g fill="none" stroke-width="1.5">
+        <!-- Target box around big gray block -->
+        <rect x="110" y="390" width="80" height="80" stroke="#ef4444" stroke-dasharray="3 3" rx="4" opacity="0.6" />
+        <!-- Crosshairs -->
+        <path d="M 105 390 L 115 390 M 110 385 L 110 395" stroke="#ef4444" opacity="0.8" />
+        <text x="110" y="380" fill="#ef4444" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 1px;" opacity="0.8">UNORGANIZED DATA</text>
+        
+        <!-- Target box around upper cluster -->
+        <rect x="110" y="170" width="100" height="100" stroke="#f59e0b" stroke-dasharray="4 4" rx="4" opacity="0.5" />
+        <text x="110" y="160" fill="#f59e0b" style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 1px;" opacity="0.8">QUEUED FOR ASSEMBLY</text>
+    </g>
+
+    <!-- Right Side Organized UI Callouts -->
+    <g style="font-family: ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 1px;">
+        <!-- Inner Planet Callout -->
+        <polyline points="592,315 592,295 622,295" fill="none" stroke="#c084fc" stroke-width="1.5" />
+        <circle cx="592" cy="315" r="2" fill="#c084fc" />
+        <text x="628" y="299" fill="#c084fc">ORBIT 1 ALIGNED</text>
+
+        <!-- Middle Planet Callout -->
+        <polyline points="673,422 673,392 703,392" fill="none" stroke="#f472b6" stroke-width="1.5" />
+        <circle cx="673" cy="422" r="2" fill="#f472b6" />
+        <text x="709" y="396" fill="#f472b6">ORBIT 2 ALIGNED</text>
+
+        <!-- Outer Planet Callout -->
+        <polyline points="763,278 763,248 793,248" fill="none" stroke="#60a5fa" stroke-width="1.5" />
+        <circle cx="763" cy="278" r="2" fill="#60a5fa" />
+        <text x="799" y="252" fill="#60a5fa">ORBIT 3 ALIGNED</text>
+    </g>
+
+</svg>

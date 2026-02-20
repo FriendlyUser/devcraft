@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="600" height="220">
+  <defs>
+    <!-- Brand Gradients -->
+    <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </linearGradient>
+    
+    <!-- Glass Background Filter -->
+    <filter id="glass-blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    </filter>
+    
+    <!-- Icon Styles -->
+    <style>
+      .icon-bg { fill: #F8FAFC; stroke: #E2E8F0; stroke-width: 1; }
+      .icon-stroke { fill: none; stroke: #1E293B; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .accent-stroke { stroke: #3B82F6; }
+      .accent-fill { fill: #3B82F6; }
+      
+      /* Animations */
+      
+      /* Icon 1: Strategy (Pulse) */
+      .node-pulse { animation: pulseNode 2s infinite; }
+      @keyframes pulseNode {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.7; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      
+      /* Icon 2: Design (Float) */
+      .layer-top { animation: floatLayer 3s ease-in-out infinite; }
+      .layer-mid { animation: floatLayer 3s ease-in-out infinite; animation-delay: 0.2s; }
+      .layer-bot { animation: floatLayer 3s ease-in-out infinite; animation-delay: 0.4s; }
+      @keyframes floatLayer {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+      }
+      
+      /* Icon 3: Code (Type) */
+      .code-line { stroke-dasharray: 20; stroke-dashoffset: 20; animation: drawLine 2s ease-out infinite; }
+      .code-line.d1 { animation-delay: 0.5s; }
+      .code-line.d2 { animation-delay: 1.0s; }
+      @keyframes drawLine {
+        0% { stroke-dashoffset: 20; opacity: 0; }
+        20% { opacity: 1; }
+        50% { stroke-dashoffset: 0; opacity: 1; }
+        90% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+      
+      /* Hover Container Effect */
+      .icon-container { cursor: pointer; transition: transform 0.2s; }
+      .icon-container:hover { transform: translateY(-5px); }
+      
+      /* Text Style */
+      .label-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 14px; fill: #64748B; text-anchor: middle; font-weight: 600; letter-spacing: 0.5px; }
+    </style>
+  </defs>
+
+  <!-- === Icon 1: Strategy === -->
+  <g class="icon-container" transform="translate(20, 20)">
+    <!-- Glass Card -->
+    <rect class="icon-bg" x="0" y="0" width="160" height="160" rx="24" />
+    
+    <!-- Content -->
+    <g transform="translate(80, 80)">
+      <!-- Central Hub -->
+      <circle cx="0" cy="0" r="14" class="icon-stroke accent-stroke" fill="#EFF6FF" />
+      <!-- Satellite Nodes -->
+      <circle class="node-pulse" cx="0" cy="-35" r="6" fill="#3B82F6" />
+      <circle class="node-pulse" cx="30" cy="18" r="6" fill="#3B82F6" style="animation-delay: 0.3s" />
+      <circle class="node-pulse" cx="-30" cy="18" r="6" fill="#3B82F6" style="animation-delay: 0.6s" />
+      
+      <!-- Connectors -->
+      <line x1="0" y1="-14" x2="0" y2="-29" class="icon-stroke" opacity="0.3" />
+      <line x1="12" y1="7" x2="25" y2="15" class="icon-stroke" opacity="0.3" />
+      <line x1="-12" y1="7" x2="-25" y2="15" class="icon-stroke" opacity="0.3" />
+    </g>
+    <text class="label-text" x="80" y="145">STRATEGY</text>
+  </g>
+
+  <!-- === Icon 2: Design (Dot Removed) === -->
+  <g class="icon-container" transform="translate(220, 20)">
+    <rect class="icon-bg" x="0" y="0" width="160" height="160" rx="24" />
+    
+    <g transform="translate(80, 80)">
+      <!-- Bottom Layer -->
+      <path class="layer-bot icon-stroke" d="M-28,12 L0,26 L28,12 L0,-2 Z" fill="#E2E8F0" opacity="0.5" />
+      <!-- Mid Layer -->
+      <path class="layer-mid icon-stroke" d="M-28,-6 L0,8 L28,-6 L0,-20 Z" fill="#CBD5E1" />
+      <!-- Top Layer (Clean Surface) -->
+      <path class="layer-top icon-stroke accent-stroke" d="M-28,-24 L0,-10 L28,-24 L0,-38 Z" fill="#EFF6FF" />
+    </g>
+    <text class="label-text" x="80" y="145">DESIGN</text>
+  </g>
+
+  <!-- === Icon 3: Engineering === -->
+  <g class="icon-container" transform="translate(420, 20)">
+    <rect class="icon-bg" x="0" y="0" width="160" height="160" rx="24" />
+    
+    <g transform="translate(50, 55)">
+      <!-- Window Frame -->
+      <rect class="icon-stroke" x="0" y="0" width="60" height="50" rx="6" fill="#FFF" />
+      <!-- Header Dots -->
+      <circle cx="10" cy="10" r="2" fill="#CBD5E1" />
+      <circle cx="18" cy="10" r="2" fill="#CBD5E1" />
+      
+      <!-- Code Lines -->
+      <line class="icon-stroke accent-stroke code-line" x1="10" y1="25" x2="30" y2="25" stroke-width="3" />
+      <line class="icon-stroke accent-stroke code-line d1" x1="10" y1="35" x2="40" y2="35" stroke-width="3" />
+      <line class="icon-stroke accent-stroke code-line d2" x1="10" y1="45" x2="25" y2="45" stroke-width="3" />
+      
+      <!-- Decor tag -->
+      <path d="M50,60 L65,60 L70,55 L70,40" class="icon-stroke" stroke-dasharray="2,2" opacity="0.3" />
+    </g>
+    <text class="label-text" x="80" y="145">ENGINEERING</text>
+  </g>
+
+</svg>

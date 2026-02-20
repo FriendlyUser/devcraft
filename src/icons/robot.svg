@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- Soft glow filter for the eyes and antenna -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- 1. Ground Shadow -->
+  <ellipse cx="100" cy="175" rx="35" ry="17.5" fill="#cbd5e1" opacity="0.4" />
+
+  <!-- 2. Neck Base -->
+  <g id="neck">
+    <!-- Neck Right (Darker Shade) -->
+    <polygon points="100,145 120,135 120,160 100,170" fill="#64748b" stroke="#64748b" stroke-width="0.5" stroke-linejoin="round" />
+    <!-- Neck Left (Mid Shade) -->
+    <polygon points="80,135 100,145 100,170 80,160" fill="#94a3b8" stroke="#94a3b8" stroke-width="0.5" stroke-linejoin="round" />
+  </g>
+
+  <!-- 3. Main Head Cube -->
+  <g id="head-base">
+    <!-- Top Face (Lightest) -->
+    <polygon points="100,40 150,65 100,90 50,65" fill="#f8fafc" stroke="#f8fafc" stroke-width="0.5" stroke-linejoin="round" />
+    
+    <!-- Right Face (Side - Mid-Dark) -->
+    <polygon points="100,90 150,65 150,120 100,145" fill="#cbd5e1" stroke="#cbd5e1" stroke-width="0.5" stroke-linejoin="round" />
+    
+    <!-- Left Face (Front - Mid-Light) -->
+    <polygon points="50,65 100,90 100,145 50,120" fill="#e2e8f0" stroke="#e2e8f0" stroke-width="0.5" stroke-linejoin="round" />
+  </g>
+
+  <!-- 4. Right Side Details (Vents) -->
+  <g id="vents" fill="#94a3b8" stroke="#94a3b8" stroke-width="0.5" stroke-linejoin="round">
+    <polygon points="115,95 135,85 135,88 115,98" />
+    <polygon points="115,102 135,92 135,95 115,105" />
+    <polygon points="115,109 135,99 135,102 115,112" />
+  </g>
+
+  <!-- 5. Front Face Details (Visor & Eyes) -->
+  <g id="visor-group">
+    <!-- Dark Glass Visor -->
+    <polygon points="55,75 95,95 95,115 55,95" fill="#0f172a" stroke="#0f172a" stroke-width="0.5" stroke-linejoin="round" />
+    
+    <!-- Glowing Eyes (Mapped to the isometric grid) -->
+    <g fill="#38bdf8" filter="url(#glow)">
+      <!-- Left Eye -->
+      <polygon points="63,84 71,88 71,92 63,88" />
+      <!-- Right Eye -->
+      <polygon points="79,92 87,96 87,100 79,96" />
+    </g>
+  </g>
+
+  <!-- 6. Top Details (Antenna) -->
+  <g id="antenna">
+    <!-- Antenna Base Top -->
+    <polygon points="100,55 105,57.5 100,60 95,57.5" fill="#cbd5e1" stroke="#cbd5e1" stroke-width="0.5" stroke-linejoin="round" />
+    <!-- Antenna Base Right -->
+    <polygon points="100,60 105,57.5 105,62.5 100,65" fill="#64748b" stroke="#64748b" stroke-width="0.5" stroke-linejoin="round" />
+    <!-- Antenna Base Left -->
+    <polygon points="95,57.5 100,60 100,65 95,62.5" fill="#94a3b8" stroke="#94a3b8" stroke-width="0.5" stroke-linejoin="round" />
+
+    <!-- Antenna Stem -->
+    <line x1="100" y1="57.5" x2="100" y2="28" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Antenna Orb with Glow -->
+    <circle cx="100" cy="26" r="5" fill="#f43f5e" filter="url(#glow)" />
+    <!-- Core orb to keep center sharp -->
+    <circle cx="100" cy="26" r="3.5" fill="#fb7185" />
+  </g>
+</svg>

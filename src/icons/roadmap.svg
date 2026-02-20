@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <style>
+      <![CDATA[
+      /* Base Resets & Typography */
+      * { box-sizing: border-box; }
+
+      /* Robot Movement - Precise Linear X/Y Translation */
+      @keyframes moveRobot {
+        0%, 5% { transform: translate(160px, 380px); opacity: 1; animation-timing-function: linear; }
+        15%, 20% { transform: translate(280px, 320px); opacity: 1; animation-timing-function: linear; }
+        30%, 35% { transform: translate(400px, 380px); opacity: 1; animation-timing-function: linear; }
+        45%, 50% { transform: translate(520px, 320px); opacity: 1; animation-timing-function: linear; }
+        60%, 90% { transform: translate(640px, 260px); opacity: 1; animation-timing-function: step-end; }
+        92% { transform: translate(640px, 260px); opacity: 0; }
+        96% { transform: translate(160px, 380px); opacity: 0; }
+        100% { transform: translate(160px, 380px); opacity: 1; }
+      }
+
+      @keyframes jumpRobot {
+        0%, 5% { transform: translateY(0); animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); }
+        10%    { transform: translateY(-75px); animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0); }
+        15%, 20% { transform: translateY(0); animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); }
+        25%    { transform: translateY(-75px); animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0); }
+        30%, 35% { transform: translateY(0); animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); }
+        40%    { transform: translateY(-75px); animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0); }
+        45%, 50% { transform: translateY(0); animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); }
+        55%    { transform: translateY(-75px); animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0); }
+        60%, 100% { transform: translateY(0); }
+      }
+
+      @keyframes squashRobot {
+        0%, 4% { transform: scale(1, 1); }
+        5% { transform: scale(1.1, 0.9); }
+        6%, 14.99% { transform: scale(0.9, 1.1); }
+        15% { transform: scale(1.3, 0.75); animation-timing-function: ease-out; }
+        17%, 19.99% { transform: scale(1, 1); }
+        20% { transform: scale(1.1, 0.9); }
+        21%, 29.99% { transform: scale(0.9, 1.1); }
+        30% { transform: scale(1.3, 0.75); animation-timing-function: ease-out; }
+        32%, 34.99% { transform: scale(1, 1); }
+        35% { transform: scale(1.1, 0.9); }
+        36%, 44.99% { transform: scale(0.9, 1.1); }
+        45% { transform: scale(1.3, 0.75); animation-timing-function: ease-out; }
+        47%, 49.99% { transform: scale(1, 1); }
+        50% { transform: scale(1.1, 0.9); }
+        51%, 59.99% { transform: scale(0.9, 1.1); }
+        60% { transform: scale(1.3, 0.75); animation-timing-function: ease-out; }
+        62%, 100% { transform: scale(1, 1); }
+      }
+
+      @keyframes shadowScale {
+        0%, 5% { transform: scale(1); opacity: 0.25; animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); }
+        10%    { transform: scale(0.4); opacity: 0.1; animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0); }
+        15%, 20% { transform: scale(1); opacity: 0.25; animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); }
+        25%    { transform: scale(0.4); opacity: 0.1; animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0); }
+        30%, 35% { transform: scale(1); opacity: 0.25; animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); }
+        40%    { transform: scale(0.4); opacity: 0.1; animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0); }
+        45%, 50% { transform: scale(1); opacity: 0.25; animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); }
+        55%    { transform: scale(0.4); opacity: 0.1; animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0); }
+        60%, 100% { transform: scale(1); opacity: 0.25; }
+      }
+
+      @keyframes s2top   { 0%, 14.99% { fill: #475569; } 15%, 92% { fill: #34d399; } 93%, 100% { fill: #475569; } }
+      @keyframes s2left  { 0%, 14.99% { fill: #1e293b; } 15%, 92% { fill: #059669; } 93%, 100% { fill: #1e293b; } }
+      @keyframes s2right { 0%, 14.99% { fill: #334155; } 15%, 92% { fill: #10b981; } 93%, 100% { fill: #334155; } }
+      @keyframes s3top   { 0%, 29.99% { fill: #475569; } 30%, 92% { fill: #34d399; } 93%, 100% { fill: #475569; } }
+      @keyframes s3left  { 0%, 29.99% { fill: #1e293b; } 30%, 92% { fill: #059669; } 93%, 100% { fill: #1e293b; } }
+      @keyframes s3right { 0%, 29.99% { fill: #334155; } 30%, 92% { fill: #10b981; } 93%, 100% { fill: #334155; } }
+      @keyframes s4top   { 0%, 44.99% { fill: #475569; } 45%, 92% { fill: #34d399; } 93%, 100% { fill: #475569; } }
+      @keyframes s4left  { 0%, 44.99% { fill: #1e293b; } 45%, 92% { fill: #059669; } 93%, 100% { fill: #1e293b; } }
+      @keyframes s4right { 0%, 44.99% { fill: #334155; } 45%, 92% { fill: #10b981; } 93%, 100% { fill: #334155; } }
+      @keyframes s5top   { 0%, 59.99% { fill: #475569; } 60%, 92% { fill: #34d399; } 93%, 100% { fill: #475569; } }
+      @keyframes s5left  { 0%, 59.99% { fill: #1e293b; } 60%, 92% { fill: #059669; } 93%, 100% { fill: #1e293b; } }
+      @keyframes s5right { 0%, 59.99% { fill: #334155; } 60%, 92% { fill: #10b981; } 93%, 100% { fill: #334155; } }
+
+      @keyframes conf1 { 0%, 59.99% { opacity: 0; transform: translate(0, 0) scale(0); } 60% { opacity: 1; transform: translate(0, 0) scale(1); animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); } 70% { opacity: 1; transform: translate(-35px, -60px) rotate(90deg) scale(1.2); animation-timing-function: ease-in; } 85% { opacity: 0; transform: translate(-45px, -10px) rotate(180deg) scale(0.8); } 86%, 100% { opacity: 0; } }
+      @keyframes conf2 { 0%, 59.99% { opacity: 0; transform: translate(0, 0) scale(0); } 60% { opacity: 1; transform: translate(0, 0) scale(1); animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); } 70% { opacity: 1; transform: translate(0px, -80px) rotate(45deg) scale(1.2); animation-timing-function: ease-in; } 85% { opacity: 0; transform: translate(0px, -20px) rotate(120deg) scale(0.8); } 86%, 100% { opacity: 0; } }
+      @keyframes conf3 { 0%, 59.99% { opacity: 0; transform: translate(0, 0) scale(0); } 60% { opacity: 1; transform: translate(0, 0) scale(1); animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1); } 70% { opacity: 1; transform: translate(35px, -60px) rotate(-90deg) scale(1.2); animation-timing-function: ease-in; } 85% { opacity: 0; transform: translate(45px, -10px) rotate(-180deg) scale(0.8); } 86%, 100% { opacity: 0; } }
+
+      .anim-robot-move { animation: moveRobot 10s infinite; }
+      .anim-robot-jump { animation: jumpRobot 10s infinite; }
+      .anim-robot-squash { animation: squashRobot 10s infinite; transform-origin: 0px 0px; }
+      .anim-robot-shadow { animation: shadowScale 10s infinite; transform-origin: center; }
+      
+      .s2-t { animation: s2top 10s infinite; } .s2-l { animation: s2left 10s infinite; } .s2-r { animation: s2right 10s infinite; }
+      .s3-t { animation: s3top 10s infinite; } .s3-l { animation: s3left 10s infinite; } .s3-r { animation: s3right 10s infinite; }
+      .s4-t { animation: s4top 10s infinite; } .s4-l { animation: s4left 10s infinite; } .s4-r { animation: s4right 10s infinite; }
+      .s5-t { animation: s5top 10s infinite; } .s5-l { animation: s5left 10s infinite; } .s5-r { animation: s5right 10s infinite; }
+
+      .c1 { animation: conf1 10s infinite; }
+      .c2 { animation: conf2 10s infinite; }
+      .c3 { animation: conf3 10s infinite; }
+      ]]>
+    </style>
+  </defs>
+
+  <rect width="800" height="500" fill="#0f172a" />
+
+  <g transform="translate(400, 80)" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">
+    <text y="0" fill="#f8fafc" font-size="32" font-weight="800" letter-spacing="2">STEP-BY-STEP COMPLETION</text>
+    <text y="30" fill="#94a3b8" font-size="14" font-weight="500" letter-spacing="1.5">AUTOMATING PROGRESS ACROSS THE ROADMAP</text>
+    <rect x="-24" y="50" width="48" height="4" rx="2" fill="#38bdf8" />
+  </g>
+
+  <path d="M 160 410 L 280 350 L 400 410 L 520 350 L 640 290" fill="none" stroke="#334155" stroke-width="4" stroke-dasharray="8 8" />
+
+  <g transform="translate(100, 350)">
+    <polygon points="60,0 120,30 60,60 0,30" fill="#34d399" />
+    <polygon points="0,30 60,60 60,90 0,60" fill="#059669" />
+    <polygon points="120,30 60,60 60,90 120,60" fill="#10b981" />
+  </g>
+
+  <g transform="translate(220, 290)">
+    <polygon class="s2-t" points="60,0 120,30 60,60 0,30" fill="#475569" />
+    <polygon class="s2-l" points="0,30 60,60 60,90 0,60" fill="#1e293b" />
+    <polygon class="s2-r" points="120,30 60,60 60,90 120,60" fill="#334155" />
+  </g>
+
+  <g transform="translate(340, 350)">
+    <polygon class="s3-t" points="60,0 120,30 60,60 0,30" fill="#475569" />
+    <polygon class="s3-l" points="0,30 60,60 60,90 0,60" fill="#1e293b" />
+    <polygon class="s3-r" points="120,30 60,60 60,90 120,60" fill="#334155" />
+  </g>
+
+  <g transform="translate(460, 290)">
+    <polygon class="s4-t" points="60,0 120,30 60,60 0,30" fill="#475569" />
+    <polygon class="s4-l" points="0,30 60,60 60,90 0,60" fill="#1e293b" />
+    <polygon class="s4-r" points="120,30 60,60 60,90 120,60" fill="#334155" />
+  </g>
+
+  <g transform="translate(580, 230)">
+    <polygon class="s5-t" points="60,0 120,30 60,60 0,30" fill="#475569" />
+    <polygon class="s5-l" points="0,30 60,60 60,90 0,60" fill="#1e293b" />
+    <polygon class="s5-r" points="120,30 60,60 60,90 120,60" fill="#334155" />
+    <g transform="translate(60, 15)">
+      <line x1="0" y1="0" x2="0" y2="-50" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" />
+      <polygon points="0,-45 25,-35 0,-25" fill="#f43f5e" />
+    </g>
+  </g>
+
+  <g transform="translate(640, 250)">
+    <rect class="c1" x="-4" y="-4" width="8" height="8" fill="#facc15" />
+    <circle class="c2" cx="0" cy="0" r="4" fill="#60a5fa" />
+    <polygon class="c3" points="0,-5 5,4 -5,4" fill="#f472b6" />
+  </g>
+
+  <g class="anim-robot-move">
+    <ellipse class="anim-robot-shadow" cx="0" cy="0" rx="18" ry="9" fill="#000000" />
+    <g class="anim-robot-jump">
+      <g class="anim-robot-squash">
+        <line x1="0" y1="-46" x2="0" y2="-64" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" />
+        <circle cx="0" cy="-66" r="4" fill="#f43f5e" />
+        <polygon points="0,-58 24,-46 0,-34 -24,-46" fill="#ffffff" />
+        <polygon points="-24,-46 0,-34 0,-6 -24,-18" fill="#94a3b8" />
+        <polygon points="24,-46 0,-34 0,-6 24,-18" fill="#cbd5e1" />
+        <polygon points="4,-32 20,-40 20,-24 4,-16" fill="#0f172a" />
+        <polygon points="8,-28 10,-29 10,-25 8,-24" fill="#38bdf8" />
+        <polygon points="14,-31 16,-32 16,-28 14,-27" fill="#38bdf8" />
+        <polygon points="-20,-16 0,-4 0,0 -20,-12" fill="#334155" />
+        <polygon points="20,-16 0,-4 0,0 20,-12" fill="#1e293b" />
+      </g>
+    </g>
+  </g>
+</svg>
