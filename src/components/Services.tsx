@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import FancyHeader, { Token } from './FancyHeader';
 import SkillsIcon from '../icons/skills.svg?react';
+import Pathways from '../icons/pathways.svg?react'
 import roadmapSvg from '../icons/roadmap.svg'; // Path to your SVG file
 
 export default function Services() {
@@ -16,27 +17,34 @@ export default function Services() {
           <p className="text-lg text-slate-600">Comprehensive software engineering services tailored to your unique business challenges.</p>
         </div>
 
-       {/* Two Column Grid */}
+        {/* Two Column Grid */}
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-          
-          {/* Column 1: Skills/Icons */}
-          <div className="flex flex-col items-center md:items-start w-full">
-            <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center md:text-left">Technical Proficiency</h3>
-            <div className="w-full">
+
+          {/* Column 1 */}
+          <div className="flex flex-col w-full h-full">
+            <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center md:text-center">
+              Technical Proficiency
+            </h3>
+            <div className="flex flex-1 items-center justify-center w-full">
               <SkillsIcon className="w-full h-auto drop-shadow-sm pointer-events-none" />
             </div>
           </div>
 
-          {/* Column 2: Roadmap Image */}
-          <div className="flex flex-col justify-center items-center w-full">
-            <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center">Development Roadmap</h3>
+          {/* Column 2 */}
+          <div className="flex flex-col w-full h-full justify-center">
+            <h3 className="text-2xl font-bold text-slate-800 mb-8 text-center">
+              Development Roadmap
+            </h3>
             <img 
               src={roadmapSvg} 
               alt="Project Roadmap Timeline" 
               className="w-full h-auto max-h-[450px] object-contain rounded-2xl shadow-xl border border-slate-200/50"
             />
           </div>
-
+        </div>
+        <div>
+            <h2 className='text-2xl font-bold text-slate-800 mb-8 text-center mt-12'>Web Scraping</h2>
+           <Pathways className="w-full h-auto drop-shadow-sm pointer-events-none" />
         </div>
       </div>
     </section>

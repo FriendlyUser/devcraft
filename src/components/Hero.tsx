@@ -4,6 +4,7 @@ import SvgPlaceholder from './SvgPlaceholder';
 import BounceButton from './BounceButton';
 import FancyHeader, { Token } from './FancyHeader';
 import LifeIcon from '../icons/flowers.svg?react';
+import Websites from '../icons/websites.svg?react'
 import RobotIcon from '../icons/robot.svg?react'
 import AnimatedMonitor from './AnimatedMonitor'
 export default function Hero() {
@@ -56,12 +57,11 @@ export default function Hero() {
           <motion.div 
             animate={{ y: [0, 20, 0] }}
             transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-            className="absolute -bottom-8 -left-8 w-32 h-32"
+            className="absolute -bottom-4 -left-8 w-24 h-24"
           >
              <AnimatedMonitor className="w-full h-full rounded-2xl" text="Float SVG 2" />
           </motion.div>
         </motion.div>
-        <AnimatedMonitor className="w-full h-full rounded-2xl" text="Float SVG 2" />
       </div>
     </section>
   );

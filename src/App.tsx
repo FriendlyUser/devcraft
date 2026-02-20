@@ -1,8 +1,10 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import Process from './components/Process';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
+import OurWork from './components/OurWork';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -12,6 +14,8 @@ export default function App() {
       <main>
         <Hero />
         <Services />
+        <Process />
+        <OurWork />
         <Testimonials />
         <ContactForm />
       </main>
